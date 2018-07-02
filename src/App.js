@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // class App extends Component {
 //   render() {
@@ -12,18 +12,32 @@ import React, { Component } from 'react';
 // }
 
 const App = () => {
+  const profiles = [
+    { name:"Taro", age:10 },
+    { name:"Hanako", age:5 },
+    { name:"Hanako", age:5 },
+    { name:"Hanako", age:5 },
+    { name:"Hanako", age:5 },
+    { name:"Hanako", age:5 },
+    { name:"デーモン閣下" },
+  ]
     return (
       <div>
-        <Cat />
-        <Cat />
-        <Cat />
-        <Cat />
+      {
+        profiles.map((profile, index) => {
+          return <User name={profile.name} age={profile.age} key={index} />
+        })
+      }
       </div>
     )
 }
 
 
-const Cat = () => {
-  return <div>Meow</div>;
+const User = (props) => {
+  return <div>こんにちは！ {props.name}さん！ {props.age}歳ですね！</div>;
+}
+
+User.defaultProps = {
+  age: 100012
 }
 export default App;
